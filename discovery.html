@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Check Your Email | Tecno Zone Discovery</title>
+<meta name="description" content="Your custom roadmap is on its way. Watch the video while you wait.">
+<meta property="og:title" content="Check Your Email | Tecno Zone Discovery">
+<meta property="og:description" content="Your custom roadmap is on its way. Watch the video while you wait.">
+<meta property="og:type" content="website">
+<style>
+:root{--bg:#0b1f3a;--panel:#12294a;--text:#f3f6fb;--muted:#b7c3d6;--line:#2b4468;--accent:#ffc233;--on-accent:#1a1300}
+@media (prefers-color-scheme:light){:root{--bg:#f4f7fc;--panel:#fff;--text:#0b1f3a;--muted:#46587a;--line:#c9d4e6;--accent:#0b1f3a;--on-accent:#fff}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;padding:24px 18px 40px;background:var(--bg);color:var(--text);font:18px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:760px;margin:0 auto}
+h1{font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.12;margin:0 0 10px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 18px}
+h2{font-size:1.15rem;margin:0 0 10px}
+.video{position:relative;aspect-ratio:16/9;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--muted)}
+.hint{color:var(--muted);font-size:.9rem;margin:10px 0 24px}
+.cta{display:flex;align-items:center;justify-content:center;min-height:58px;padding:0 24px;font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--on-accent);background:var(--accent);border-radius:12px}
+.cta:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.note{color:var(--muted);font-size:.9rem;margin:20px 0 0;text-align:center}
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title">Check your email for your custom Roadmap!</h1>
+  <p class="sub">While you wait, watch the video below.</p>
+  <h2 id="vh">Your roadmap video</h2>
+  <div class="video" id="video"></div>
+  <p class="hint">The video starts muted. Tap the speaker icon in the player to turn sound on.</p>
+  <a class="cta" id="cta" href="#">Book a free 15-min strategy call</a>
+  <p class="note">Don't see the email? Check Promotions or Spam and search for "Tecno Zone Discovery".</p>
+</main>
+<script>
+/* ===== CONFIG: edit here ===== */
+const BRAND_NAME = "Tecno Zone Discovery";
+const VIDEO_EMBED_URL_APP = "";      // e.g. https://www.youtube.com/embed/VIDEO_ID  or https://player.vimeo.com/video/ID
+const VIDEO_EMBED_URL_LINKEDIN = ""; // same format
+const BOOKING_URL = "";              // e.g. https://calendly.com/yourname/15min
+/* ============================= */
+
+const q = new URLSearchParams(location.search);
+const name = (q.get("name") || "").trim().slice(0, 40) || "friend";
+const topic = q.get("topic") === "linkedin" ? "linkedin" : "app";
+
+document.getElementById("title").textContent = "Check your email, " + name + ". Your custom Roadmap is on its way!";
+document.getElementById("vh").textContent = topic === "linkedin"
+  ? "Your LinkedIn growth roadmap, in video"
+  : "Your app launch roadmap, in video";
+
+const src = topic === "linkedin" ? VIDEO_EMBED_URL_LINKEDIN : VIDEO_EMBED_URL_APP;
+const box = document.getElementById("video");
+if(src){
+  const sep = src.indexOf("?") > -1 ? "&" : "?";
+  const f = document.createElement("iframe");
+  f.src = src + sep + "autoplay=1&mute=1&muted=1&rel=0";
+  f.title = topic === "linkedin" ? "LinkedIn growth roadmap video" : "App launch roadmap video";
+  f.allow = "autoplay; fullscreen; picture-in-picture";
+  f.allowFullscreen = true;
+  box.appendChild(f);
+}else{
+  const p = document.createElement("div");
+  p.className = "ph";
+  p.textContent = "Add your video link in the config block at the top of the script.";
+  box.appendChild(p);
+}
+
+const cta = document.getElementById("cta");
+if(BOOKING_URL){ cta.href = BOOKING_URL; cta.target = "_blank"; cta.rel = "noopener"; }
+else{ cta.setAttribute("aria-disabled", "true"); }
+</script>
+</body>
+</html>

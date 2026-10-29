@@ -1,869 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompt Engineering First™ — You Tell Me | SAK Hashmi</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Your Custom Roadmap | Tecno Zone Discovery</title>
+<meta name="description" content="Get a custom roadmap for launching your app or growing your LinkedIn, sent straight to your inbox.">
+<meta property="og:title" content="Get Your Custom Roadmap | Tecno Zone Discovery">
+<meta property="og:description" content="Get a custom roadmap for launching your app or growing your LinkedIn, sent straight to your inbox.">
+<meta property="og:type" content="website">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --ink:        #0f0e0c;
-    --ink2:       #3a3830;
-    --ink3:       #7a7568;
-    --paper:      #faf8f3;
-    --paper2:     #f2ede2;
-    --paper3:     #e8e0cc;
-    --gold:       #c9943a;
-    --gold-light: #e8c97a;
-    --gold-dim:   #c9943a14;
-    --green:      #2a6b4a;
-    --green-bg:   #edf5f0;
-    --serif:      'DM Serif Display', Georgia, serif;
-    --sans:       'DM Sans', system-ui, sans-serif;
-    --mono:       'JetBrains Mono', monospace;
-    --radius:     3px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: #ddd8c8;
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--ink);
-    padding: 40px 16px 60px;
-  }
-
-  @media print {
-    body { background: #fff; padding: 0; }
-    .no-print { display: none !important; }
-  }
-
-  /* ── WRAPPER ── */
-  .wrap {
-    max-width: 660px;
-    margin: 0 auto;
-    background: var(--paper);
-    box-shadow: 0 8px 48px #00000022;
-  }
-
-  /* ── MASTHEAD ── */
-  .mast {
-    background: var(--ink);
-    padding: 32px 44px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .mast::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
-  }
-  /* faint grid texture */
-  .mast::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(#ffffff06 1px, transparent 1px),
-      linear-gradient(90deg, #ffffff06 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-  }
-  .mast-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    position: relative;
-  }
-  .mast-brand {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: #fff;
-    letter-spacing: .01em;
-  }
-  .mast-brand span { color: var(--gold); }
-  .mast-vol {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: #ffffff35;
-    letter-spacing: .12em;
-    text-align: right;
-    line-height: 1.8;
-  }
-  .mast-eyebrow {
-    font-size: 10px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 10px;
-    position: relative;
-  }
-  .mast-h1 {
-    font-family: var(--serif);
-    font-size: clamp(28px, 6vw, 44px);
-    color: #fff;
-    line-height: 1.08;
-    margin-bottom: 14px;
-    position: relative;
-  }
-  .mast-h1 em { font-style: italic; color: var(--gold-light); }
-  .mast-sub {
-    font-size: 14px;
-    color: #ffffff55;
-    font-weight: 300;
-    line-height: 1.65;
-    max-width: 420px;
-    position: relative;
-  }
-  .mast-pills {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 22px;
-    position: relative;
-  }
-  .pill {
-    font-size: 10px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    letter-spacing: .04em;
-    font-weight: 300;
-  }
-  .pill-gold { border: 1px solid var(--gold); color: var(--gold); }
-  .pill-dim  { border: 1px solid #ffffff18; color: #ffffff40; }
-
-  /* ── BODY ── */
-  .body { padding: 40px 44px; }
-  @media (max-width: 560px) {
-    .mast { padding: 24px 24px 22px; }
-    .body { padding: 28px 24px; }
-  }
-
-  /* ── SECTION LABEL ── */
-  .slabel {
-    font-size: 10px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .slabel::after { content: ''; flex: 1; height: 1px; background: var(--paper3); }
-
-  /* ── OPENING NOTE ── */
-  .opening {
-    font-size: 15px;
-    color: var(--ink2);
-    line-height: 1.85;
-    font-weight: 300;
-    margin-bottom: 36px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--paper3);
-  }
-  .opening strong { color: var(--ink); font-weight: 500; }
-  .opening em { color: var(--gold); font-style: italic; }
-
-  /* ── PULL QUOTE ── */
-  .pull {
-    font-family: var(--serif);
-    font-size: 19px;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.55;
-    padding: 18px 22px;
-    border-left: 3px solid var(--gold);
-    background: var(--gold-dim);
-    margin: 24px 0;
-    border-radius: 0 var(--radius) var(--radius) 0;
-  }
-
-  /* ── PROGRESS BAR ── */
-  .progress-bar-wrap {
-    position: sticky;
-    top: 0;
-    background: var(--paper);
-    padding: 10px 44px;
-    border-bottom: 1px solid var(--paper3);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    z-index: 50;
-  }
-  @media (max-width: 560px) { .progress-bar-wrap { padding: 10px 24px; } }
-  .progress-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink3);
-    white-space: nowrap;
-  }
-  .progress-track {
-    flex: 1;
-    height: 3px;
-    background: var(--paper3);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    border-radius: 2px;
-    width: 0%;
-    transition: width .3s ease;
-  }
-  .progress-pct {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
-    width: 32px;
-    text-align: right;
-  }
-
-  /* ── QUESTION CARD ── */
-  .q-section {
-    margin-bottom: 36px;
-  }
-  .q-section-title {
-    font-family: var(--serif);
-    font-size: 18px;
-    color: var(--ink);
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--paper3);
-    line-height: 1.3;
-  }
-  .q-section-title em { font-style: italic; color: var(--gold); }
-
-  .q-card {
-    border: 1px solid var(--paper3);
-    border-radius: var(--radius);
-    padding: 22px 24px;
-    margin-bottom: 16px;
-    background: #fff;
-    transition: border-color .2s;
-  }
-  .q-card:focus-within { border-color: var(--gold); }
-  .q-num {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--gold);
-    letter-spacing: .1em;
-    margin-bottom: 6px;
-  }
-  .q-text {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.4;
-    margin-bottom: 4px;
-  }
-  .q-hint {
-    font-size: 12px;
-    color: var(--ink3);
-    font-weight: 300;
-    margin-bottom: 14px;
-    line-height: 1.5;
-  }
-
-  /* ── RADIO / CHECKBOX OPTIONS ── */
-  .options { display: flex; flex-direction: column; gap: 8px; }
-  .opt {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    border: 1px solid var(--paper3);
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: all .15s;
-    background: var(--paper);
-    user-select: none;
-  }
-  .opt:hover { border-color: var(--gold); background: var(--gold-dim); }
-  .opt input { display: none; }
-  .opt-circle {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2px solid var(--paper3);
-    flex-shrink: 0;
-    transition: all .15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .opt-square {
-    width: 16px;
-    height: 16px;
-    border-radius: 2px;
-    border: 2px solid var(--paper3);
-    flex-shrink: 0;
-    transition: all .15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .opt.selected { border-color: var(--gold); background: var(--gold-dim); }
-  .opt.selected .opt-circle { border-color: var(--gold); background: var(--gold); }
-  .opt.selected .opt-square { border-color: var(--gold); background: var(--gold); }
-  .opt.selected .opt-circle::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
-  .opt.selected .opt-square::after { content: '✓'; color: #fff; font-size: 10px; font-weight: 700; }
-  .opt-label { font-size: 14px; color: var(--ink2); font-weight: 300; }
-  .opt.selected .opt-label { color: var(--ink); font-weight: 400; }
-
-  /* ── TEXT INPUTS ── */
-  textarea, input[type="text"], input[type="email"] {
-    width: 100%;
-    border: 1px solid var(--paper3);
-    border-radius: var(--radius);
-    padding: 12px 14px;
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--ink);
-    background: var(--paper);
-    resize: vertical;
-    outline: none;
-    transition: border-color .2s;
-    font-weight: 300;
-    line-height: 1.6;
-  }
-  textarea:focus, input[type="text"]:focus, input[type="email"]:focus {
-    border-color: var(--gold);
-  }
-  textarea::placeholder, input::placeholder { color: var(--ink3); }
-
-  /* ── SCALE ── */
-  .scale-wrap { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-  .scale-btn {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--paper3);
-    border-radius: var(--radius);
-    background: var(--paper);
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--ink3);
-    cursor: pointer;
-    transition: all .15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .scale-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .scale-btn.selected { background: var(--ink); border-color: var(--ink); color: var(--gold); font-weight: 500; }
-  .scale-ends { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--ink3); }
-
-  /* ── DIVIDER ── */
-  .divider { border: none; border-top: 1px solid var(--paper3); margin: 36px 0; }
-
-  /* ── SUBMIT ── */
-  .submit-area {
-    background: var(--ink);
-    border-radius: var(--radius);
-    padding: 28px 28px;
-    margin-top: 8px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .submit-area::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-  .submit-note {
-    font-size: 13px;
-    color: #ffffff50;
-    font-weight: 300;
-    margin-bottom: 18px;
-    line-height: 1.6;
-  }
-  .submit-note strong { color: #ffffffaa; font-weight: 500; }
-  .submit-btn {
-    background: var(--gold);
-    color: var(--ink);
-    border: none;
-    padding: 14px 36px;
-    border-radius: 2px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: var(--sans);
-    letter-spacing: .03em;
-    transition: all .2s;
-    display: inline-block;
-  }
-  .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  /* ── THANK YOU SCREEN ── */
-  .thankyou {
-    display: none;
-    text-align: center;
-    padding: 60px 44px;
-  }
-  .thankyou-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-  }
-  .thankyou h2 {
-    font-family: var(--serif);
-    font-size: 28px;
-    color: var(--ink);
-    margin-bottom: 10px;
-    line-height: 1.2;
-  }
-  .thankyou h2 em { font-style: italic; color: var(--gold); }
-  .thankyou p {
-    font-size: 15px;
-    color: var(--ink2);
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: 400px;
-    margin: 0 auto 28px;
-  }
-  .thankyou-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-  .ta-btn {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 11px 28px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all .2s;
-  }
-  .ta-btn-solid { background: var(--ink); color: var(--paper); }
-  .ta-btn-solid:hover { background: var(--gold); color: var(--ink); }
-  .ta-btn-ghost { border: 1px solid var(--paper3); color: var(--ink2); }
-  .ta-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* ── SIGN-OFF ── */
-  .signoff {
-    margin-top: 36px;
-    padding-top: 28px;
-    border-top: 1px solid var(--paper3);
-    font-size: 14px;
-    color: var(--ink2);
-    font-weight: 300;
-    line-height: 1.8;
-  }
-  .signoff strong { color: var(--ink); font-weight: 500; }
-  .s-name { font-family: var(--serif); font-size: 22px; color: var(--ink); margin-top: 14px; }
-  .s-title { font-size: 11px; color: var(--gold); letter-spacing: .08em; text-transform: uppercase; margin-top: 3px; }
-
-  /* ── EMAIL FOOTER ── */
-  .efooter {
-    background: var(--ink);
-    padding: 20px 44px;
-    text-align: center;
-    font-size: 11px;
-    color: #ffffff30;
-    line-height: 1.8;
-  }
-  .efooter a { color: var(--gold); text-decoration: none; }
-
-  /* ── PRINT UTIL ── */
-  .print-bar { max-width: 660px; margin: 0 auto 14px; display: flex; justify-content: flex-end; }
-  .pbtn {
-    background: var(--ink); color: var(--gold); border: none;
-    padding: 7px 16px; border-radius: 2px; font-size: 11px;
-    font-weight: 500; cursor: pointer; font-family: var(--sans);
-  }
+:root{--bg:#0b1f3a;--panel:#12294a;--text:#f3f6fb;--muted:#b7c3d6;--line:#2b4468;--accent:#ffc233;--on-accent:#1a1300;--err:#ff8a8a}
+@media (prefers-color-scheme:light){:root{--bg:#f4f7fc;--panel:#fff;--text:#0b1f3a;--muted:#46587a;--line:#c9d4e6;--accent:#0b1f3a;--on-accent:#fff;--err:#b3261e}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 18px;background:var(--bg);color:var(--text);font:18px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{width:100%;max-width:560px}
+h1{font-size:clamp(1.9rem,6.5vw,2.7rem);line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 20px}
+ul{list-style:none;padding:0;margin:0 0 26px}
+li{padding-left:30px;position:relative;margin:8px 0}
+li::before{content:"";position:absolute;left:4px;top:.45em;width:12px;height:7px;border-left:3px solid var(--accent);border-bottom:3px solid var(--accent);transform:rotate(-45deg)}
+form{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+label{display:block;font-weight:600;font-size:.95rem;margin:0 0 6px}
+.f{margin-bottom:16px}
+input,select{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:14px;min-height:52px}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+button{width:100%;min-height:56px;font:inherit;font-weight:700;font-size:1.1rem;color:var(--on-accent);background:var(--accent);border:0;border-radius:12px;cursor:pointer}
+button[disabled]{opacity:.7;cursor:wait}
+.err{color:var(--err);font-size:.9rem;min-height:1.2em;margin:4px 0 0}
+.trust{text-align:center;color:var(--muted);font-size:.9rem;margin:14px 0 0}
 </style>
 </head>
 <body>
-
-<div class="print-bar no-print">
-  <button class="pbtn" onclick="window.print()">⎙ Save PDF</button>
-</div>
-
-<div class="wrap">
-
-  <!-- MASTHEAD -->
-  <div class="mast">
-    <div class="mast-top">
-      <div class="mast-brand">SAK<span>COACHING</span></div>
-      <div class="mast-vol">PROMPT ENGINEERING FIRST™<br>READER EDITION · 2026</div>
+<main>
+  <h1>Get Your Custom App Launch or LinkedIn Growth Roadmap</h1>
+  <p class="sub">Tell us where you are and get a step-by-step plan in your inbox within minutes.</p>
+  <ul>
+    <li>A clear plan matched to your goal</li>
+    <li>The exact next steps, in order</li>
+    <li>A short video walkthrough to start today</li>
+  </ul>
+  <form id="f" novalidate>
+    <div class="f">
+      <label for="name">First name</label>
+      <input id="name" name="name" type="text" autocomplete="given-name" required>
     </div>
-    <div class="mast-eyebrow">Special Edition — You Tell Me</div>
-    <div class="mast-h1">Before I write<br>another word —<br><em>I'm asking you.</em></div>
-    <div class="mast-sub">This week's issue is a question. Thirteen of them, actually. Because the next six months of this newsletter belongs to you.</div>
-    <div class="mast-pills">
-      <div class="pill pill-gold">Prompt Engineering First™</div>
-      <div class="pill pill-dim">5 min · Reader Survey</div>
-      <div class="pill pill-dim">Your answers shape what comes next</div>
+    <div class="f">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
     </div>
-  </div>
-
-  <!-- STICKY PROGRESS -->
-  <div class="progress-bar-wrap no-print">
-    <div class="progress-label">Q <span id="qcur">0</span> / 13</div>
-    <div class="progress-track"><div class="progress-fill" id="pfill"></div></div>
-    <div class="progress-pct" id="ppct">0%</div>
-  </div>
-
-  <!-- FORM BODY -->
-  <div class="body" id="formBody">
-
-    <div class="slabel">A note from SAK</div>
-
-    <div class="opening">
-      I've been writing this newsletter for a while now. Growing it. Building it. Sending it every two weeks with the best I have.<br><br>
-      But here's something I've never done: <strong>actually asked you what you need.</strong><br><br>
-      Not assumed. Not guessed. Asked.<br><br>
-      So this week, there's no lesson. No framework. No prompt teardown. Instead — <em>this</em>. Thirteen questions that take about five minutes. And every answer shapes exactly what I build next: the topics I cover, the challenges I run, the masterclass I'm opening, and the content I put out on LinkedIn every week.<br><br>
-      If you've ever wanted a say in what gets made — this is it. And as a thank-you, everyone who completes this gets early access to the <strong>5-Day Prompt Engineering Challenge</strong> before it opens publicly.
+    <div class="f">
+      <label for="topic">What do you need help with?</label>
+      <select id="topic" name="topic">
+        <option value="app">App Idea to Launch</option>
+        <option value="linkedin">LinkedIn Optimization</option>
+      </select>
     </div>
-
-    <div class="pull">
-      "The best newsletters aren't written by one person. They're shaped by a community that cares enough to say what they actually need."
-    </div>
-
-    <form id="surveyForm" onsubmit="handleSubmit(event)" novalidate>
-
-      <!-- ── SECTION A: WHO YOU ARE ── -->
-      <div class="q-section">
-        <div class="q-section-title">Part A — <em>Who you are</em></div>
-
-        <!-- Q1 -->
-        <div class="q-card">
-          <div class="q-num">Q 01 / 13</div>
-          <div class="q-text">What's your primary role right now?</div>
-          <div class="q-hint">Pick the one that fits closest — even if you wear multiple hats.</div>
-          <div class="options" data-type="radio" data-q="q1">
-            <label class="opt"><input type="radio" name="q1" value="Student / learner"><div class="opt-circle"></div><span class="opt-label">Student / learner</span></label>
-            <label class="opt"><input type="radio" name="q1" value="Working professional (employed)"><div class="opt-circle"></div><span class="opt-label">Working professional (employed)</span></label>
-            <label class="opt"><input type="radio" name="q1" value="Freelancer / consultant"><div class="opt-circle"></div><span class="opt-label">Freelancer / consultant</span></label>
-            <label class="opt"><input type="radio" name="q1" value="Founder / entrepreneur"><div class="opt-circle"></div><span class="opt-label">Founder / entrepreneur</span></label>
-            <label class="opt"><input type="radio" name="q1" value="Developer / engineer"><div class="opt-circle"></div><span class="opt-label">Developer / engineer</span></label>
-            <label class="opt"><input type="radio" name="q1" value="Other"><div class="opt-circle"></div><span class="opt-label">Other — I'll tell you below</span></label>
-          </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="q-card">
-          <div class="q-num">Q 02 / 13</div>
-          <div class="q-text">Which industry are you in?</div>
-          <div class="q-hint">This tells me which playbooks to build first.</div>
-          <div class="options" data-type="radio" data-q="q2">
-            <label class="opt"><input type="radio" name="q2" value="Marketing / content"><div class="opt-circle"></div><span class="opt-label">Marketing / content</span></label>
-            <label class="opt"><input type="radio" name="q2" value="Technology / software"><div class="opt-circle"></div><span class="opt-label">Technology / software</span></label>
-            <label class="opt"><input type="radio" name="q2" value="HR / people operations"><div class="opt-circle"></div><span class="opt-label">HR / people operations</span></label>
-            <label class="opt"><input type="radio" name="q2" value="Education / coaching"><div class="opt-circle"></div><span class="opt-label">Education / coaching</span></label>
-            <label class="opt"><input type="radio" name="q2" value="Business / finance"><div class="opt-circle"></div><span class="opt-label">Business / finance</span></label>
-            <label class="opt"><input type="radio" name="q2" value="Other"><div class="opt-circle"></div><span class="opt-label">Other</span></label>
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="q-card">
-          <div class="q-num">Q 03 / 13</div>
-          <div class="q-text">How would you rate your current level with AI tools?</div>
-          <div class="q-hint">Honest answers only — there's no wrong level here.</div>
-          <div class="options" data-type="radio" data-q="q3">
-            <label class="opt"><input type="radio" name="q3" value="Complete beginner"><div class="opt-circle"></div><span class="opt-label">Complete beginner — I barely use them</span></label>
-            <label class="opt"><input type="radio" name="q3" value="Occasional user"><div class="opt-circle"></div><span class="opt-label">Occasional user — I try them but results are hit-or-miss</span></label>
-            <label class="opt"><input type="radio" name="q3" value="Daily user"><div class="opt-circle"></div><span class="opt-label">Daily user — I use them constantly but feel like I'm missing something</span></label>
-            <label class="opt"><input type="radio" name="q3" value="Confident user"><div class="opt-circle"></div><span class="opt-label">Confident user — I get good results but want to go deeper</span></label>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── SECTION B: YOUR AI FRUSTRATIONS ── -->
-      <div class="q-section">
-        <div class="q-section-title">Part B — <em>Where AI is failing you</em></div>
-
-        <!-- Q4 -->
-        <div class="q-card">
-          <div class="q-num">Q 04 / 13</div>
-          <div class="q-text">What's the single most frustrating thing about using AI tools right now?</div>
-          <div class="q-hint">Be specific — this directly shapes what I teach next.</div>
-          <div class="options" data-type="radio" data-q="q4">
-            <label class="opt"><input type="radio" name="q4" value="Output is too generic"><div class="opt-circle"></div><span class="opt-label">The output is too generic — it never sounds like me</span></label>
-            <label class="opt"><input type="radio" name="q4" value="Inconsistent results"><div class="opt-circle"></div><span class="opt-label">Results are inconsistent — same prompt, different quality every time</span></label>
-            <label class="opt"><input type="radio" name="q4" value="Don't know how to write prompts"><div class="opt-circle"></div><span class="opt-label">I don't know how to write a good prompt in the first place</span></label>
-            <label class="opt"><input type="radio" name="q4" value="Too much editing required"><div class="opt-circle"></div><span class="opt-label">I spend more time editing the output than I would doing it myself</span></label>
-            <label class="opt"><input type="radio" name="q4" value="Don't trust the accuracy"><div class="opt-circle"></div><span class="opt-label">I don't trust the accuracy — it confidently says wrong things</span></label>
-            <label class="opt"><input type="radio" name="q4" value="Other frustration"><div class="opt-circle"></div><span class="opt-label">Something else — I'll tell you below</span></label>
-          </div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="q-card">
-          <div class="q-num">Q 05 / 13</div>
-          <div class="q-text">Which AI tool do you use most often?</div>
-          <div class="q-hint">Select all that apply — this tells me which demos to run in sessions.</div>
-          <div class="options" data-type="checkbox" data-q="q5">
-            <label class="opt"><input type="checkbox" name="q5" value="ChatGPT"><div class="opt-square"></div><span class="opt-label">ChatGPT</span></label>
-            <label class="opt"><input type="checkbox" name="q5" value="Claude"><div class="opt-square"></div><span class="opt-label">Claude (Anthropic)</span></label>
-            <label class="opt"><input type="checkbox" name="q5" value="Gemini"><div class="opt-square"></div><span class="opt-label">Google Gemini</span></label>
-            <label class="opt"><input type="checkbox" name="q5" value="Copilot"><div class="opt-square"></div><span class="opt-label">Microsoft Copilot</span></label>
-            <label class="opt"><input type="checkbox" name="q5" value="Perplexity"><div class="opt-square"></div><span class="opt-label">Perplexity</span></label>
-            <label class="opt"><input type="checkbox" name="q5" value="None yet"><div class="opt-square"></div><span class="opt-label">I haven't settled on one yet</span></label>
-          </div>
-        </div>
-
-        <!-- Q6 — scale -->
-        <div class="q-card">
-          <div class="q-num">Q 06 / 13</div>
-          <div class="q-text">On a scale of 1–10, how often do AI outputs actually meet your expectations?</div>
-          <div class="q-hint">1 = almost never · 10 = almost always</div>
-          <div class="scale-wrap" data-q="q6">
-            <button type="button" class="scale-btn" data-val="1" onclick="selectScale(this,'q6')">1</button>
-            <button type="button" class="scale-btn" data-val="2" onclick="selectScale(this,'q6')">2</button>
-            <button type="button" class="scale-btn" data-val="3" onclick="selectScale(this,'q6')">3</button>
-            <button type="button" class="scale-btn" data-val="4" onclick="selectScale(this,'q6')">4</button>
-            <button type="button" class="scale-btn" data-val="5" onclick="selectScale(this,'q6')">5</button>
-            <button type="button" class="scale-btn" data-val="6" onclick="selectScale(this,'q6')">6</button>
-            <button type="button" class="scale-btn" data-val="7" onclick="selectScale(this,'q6')">7</button>
-            <button type="button" class="scale-btn" data-val="8" onclick="selectScale(this,'q6')">8</button>
-            <button type="button" class="scale-btn" data-val="9" onclick="selectScale(this,'q6')">9</button>
-            <button type="button" class="scale-btn" data-val="10" onclick="selectScale(this,'q6')">10</button>
-          </div>
-          <div class="scale-ends"><span>Almost never</span><span>Almost always</span></div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── SECTION C: CONTENT DIRECTION ── -->
-      <div class="q-section">
-        <div class="q-section-title">Part C — <em>What you want to learn</em></div>
-
-        <!-- Q7 -->
-        <div class="q-card">
-          <div class="q-num">Q 07 / 13</div>
-          <div class="q-text">Which topics do you most want this newsletter to cover?</div>
-          <div class="q-hint">Pick up to 3. These become my editorial calendar.</div>
-          <div class="options" data-type="checkbox" data-q="q7">
-            <label class="opt"><input type="checkbox" name="q7" value="Prompt anatomy and structure"><div class="opt-square"></div><span class="opt-label">Prompt anatomy — how to structure every prompt correctly</span></label>
-            <label class="opt"><input type="checkbox" name="q7" value="Advanced techniques"><div class="opt-square"></div><span class="opt-label">Advanced techniques — chain-of-thought, few-shot, persona stacking</span></label>
-            <label class="opt"><input type="checkbox" name="q7" value="Role-specific playbooks"><div class="opt-square"></div><span class="opt-label">Role-specific playbooks for my job (marketing / HR / dev / founder)</span></label>
-            <label class="opt"><input type="checkbox" name="q7" value="Web development and AI"><div class="opt-square"></div><span class="opt-label">Web development — the mistakes early developers make with AI</span></label>
-            <label class="opt"><input type="checkbox" name="q7" value="AI agents and automation"><div class="opt-square"></div><span class="opt-label">AI agents, system prompts, and workflow automation</span></label>
-            <label class="opt"><input type="checkbox" name="q7" value="Building a personal prompt library"><div class="opt-square"></div><span class="opt-label">Building a personal prompt library that compounds in value</span></label>
-            <label class="opt"><input type="checkbox" name="q7" value="LinkedIn + AI for personal brand"><div class="opt-square"></div><span class="opt-label">Using AI to grow your LinkedIn and personal brand</span></label>
-          </div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="q-card">
-          <div class="q-num">Q 08 / 13</div>
-          <div class="q-text">For those interested in web development — what's your biggest struggle?</div>
-          <div class="q-hint">Skip this if web dev isn't relevant to you.</div>
-          <div class="options" data-type="radio" data-q="q8">
-            <label class="opt"><input type="radio" name="q8" value="Not applicable"><div class="opt-circle"></div><span class="opt-label">Not applicable to me</span></label>
-            <label class="opt"><input type="radio" name="q8" value="Starting from scratch"><div class="opt-circle"></div><span class="opt-label">I don't know where to start — too many tools, too many paths</span></label>
-            <label class="opt"><input type="radio" name="q8" value="Using AI to write code"><div class="opt-circle"></div><span class="opt-label">Using AI to write code — but it gives me broken code I can't debug</span></label>
-            <label class="opt"><input type="radio" name="q8" value="Understanding what AI generates"><div class="opt-circle"></div><span class="opt-label">I can make AI generate code but I don't understand what it produced</span></label>
-            <label class="opt"><input type="radio" name="q8" value="Skipping fundamentals"><div class="opt-circle"></div><span class="opt-label">I skipped the fundamentals and now I'm stuck on problems I can't explain</span></label>
-          </div>
-        </div>
-
-        <!-- Q9 — open -->
-        <div class="q-card">
-          <div class="q-num">Q 09 / 13</div>
-          <div class="q-text">If you could learn one thing about AI prompting in the next 30 days — what would it be?</div>
-          <div class="q-hint">Write anything. One line or a paragraph. This is where the most honest answers live.</div>
-          <textarea name="q9" rows="4" placeholder="e.g. How to get AI to write exactly in my tone... or how to use it for client proposals without it sounding robotic..."></textarea>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── SECTION D: MASTERCLASS READINESS ── -->
-      <div class="q-section">
-        <div class="q-section-title">Part D — <em>Where you're headed</em></div>
-
-        <!-- Q10 -->
-        <div class="q-card">
-          <div class="q-num">Q 10 / 13</div>
-          <div class="q-text">Have you heard about the As-Saadah Prompt Engineering Masterclass?</div>
-          <div class="q-hint">6 modules. Live + recorded. Full prompt engineering curriculum from first principles.</div>
-          <div class="options" data-type="radio" data-q="q10">
-            <label class="opt"><input type="radio" name="q10" value="Yes and interested"><div class="opt-circle"></div><span class="opt-label">Yes — and I'm already thinking about joining</span></label>
-            <label class="opt"><input type="radio" name="q10" value="Yes but undecided"><div class="opt-circle"></div><span class="opt-label">Yes — but I need to know more before I decide</span></label>
-            <label class="opt"><input type="radio" name="q10" value="No, tell me more"><div class="opt-circle"></div><span class="opt-label">No — but now I'm curious</span></label>
-            <label class="opt"><input type="radio" name="q10" value="Not relevant right now"><div class="opt-circle"></div><span class="opt-label">Not relevant to me right now</span></label>
-          </div>
-        </div>
-
-        <!-- Q11 -->
-        <div class="q-card">
-          <div class="q-num">Q 11 / 13</div>
-          <div class="q-text">What would make you confident enough to join a paid prompt engineering programme?</div>
-          <div class="q-hint">Select all that apply. Your answers shape how I present the masterclass.</div>
-          <div class="options" data-type="checkbox" data-q="q11">
-            <label class="opt"><input type="checkbox" name="q11" value="Free preview session"><div class="opt-square"></div><span class="opt-label">A free preview session before committing</span></label>
-            <label class="opt"><input type="checkbox" name="q11" value="Money-back guarantee"><div class="opt-square"></div><span class="opt-label">A strong money-back guarantee</span></label>
-            <label class="opt"><input type="checkbox" name="q11" value="Real student results"><div class="opt-square"></div><span class="opt-label">Seeing real results from other students like me</span></label>
-            <label class="opt"><input type="checkbox" name="q11" value="Flexible schedule"><div class="opt-square"></div><span class="opt-label">Flexible schedule — recorded sessions I can watch anytime</span></label>
-            <label class="opt"><input type="checkbox" name="q11" value="Affordable price"><div class="opt-square"></div><span class="opt-label">A price that feels fair for what I get</span></label>
-            <label class="opt"><input type="checkbox" name="q11" value="Direct access to SAK"><div class="opt-square"></div><span class="opt-label">Direct access to SAK for questions</span></label>
-          </div>
-        </div>
-
-        <!-- Q12 — scale -->
-        <div class="q-card">
-          <div class="q-num">Q 12 / 13</div>
-          <div class="q-text">How likely are you to invest in your AI skills in the next 3 months?</div>
-          <div class="q-hint">1 = very unlikely · 10 = already decided</div>
-          <div class="scale-wrap" data-q="q12">
-            <button type="button" class="scale-btn" data-val="1" onclick="selectScale(this,'q12')">1</button>
-            <button type="button" class="scale-btn" data-val="2" onclick="selectScale(this,'q12')">2</button>
-            <button type="button" class="scale-btn" data-val="3" onclick="selectScale(this,'q12')">3</button>
-            <button type="button" class="scale-btn" data-val="4" onclick="selectScale(this,'q12')">4</button>
-            <button type="button" class="scale-btn" data-val="5" onclick="selectScale(this,'q12')">5</button>
-            <button type="button" class="scale-btn" data-val="6" onclick="selectScale(this,'q12')">6</button>
-            <button type="button" class="scale-btn" data-val="7" onclick="selectScale(this,'q12')">7</button>
-            <button type="button" class="scale-btn" data-val="8" onclick="selectScale(this,'q12')">8</button>
-            <button type="button" class="scale-btn" data-val="9" onclick="selectScale(this,'q12')">9</button>
-            <button type="button" class="scale-btn" data-val="10" onclick="selectScale(this,'q12')">10</button>
-          </div>
-          <div class="scale-ends"><span>Very unlikely</span><span>Already decided</span></div>
-        </div>
-
-        <!-- Q13 — open -->
-        <div class="q-card">
-          <div class="q-num">Q 13 / 13</div>
-          <div class="q-text">Last one. Anything you want me to know — or anything you wish existed for people learning AI right now?</div>
-          <div class="q-hint">This is the open mic. Say whatever you want. I read every single response personally.</div>
-          <textarea name="q13" rows="5" placeholder="Your honest thoughts, a question, a frustration, a wish — anything at all..."></textarea>
-        </div>
-      </div>
-
-      <!-- Name + Email -->
-      <div class="q-card">
-        <div class="q-num">Almost done</div>
-        <div class="q-text">Where should I send your early access to the 5-Day Challenge?</div>
-        <div class="q-hint">Optional — but this is how I reach you directly. No spam, ever.</div>
-        <div style="display:grid; gap:10px; margin-top:4px;">
-          <input type="text" name="name" placeholder="Your first name">
-          <input type="email" name="email" placeholder="Your email address">
-        </div>
-      </div>
-
-      <!-- SUBMIT -->
-      <div class="submit-area">
-        <div class="submit-note">
-          <strong>That's it.</strong> 13 questions. Your answers go directly into how this newsletter, the challenge, and the masterclass gets built. I read every single response — not a bot, not a summary.
-        </div>
-        <button type="submit" class="submit-btn">Send My Answers →</button>
-      </div>
-
-    </form>
-
-    <!-- THANK YOU -->
-    <div class="thankyou" id="thankyou">
-      <div class="thankyou-icon">✦</div>
-      <h2>You just shaped<br><em>what comes next.</em></h2>
-      <p>Thank you for taking the time. I read every response personally — yours included. Watch your inbox for early access to the 5-Day Prompt Engineering Challenge.</p>
-      <div class="thankyou-actions">
-        <a href="https://form.jotform.com/261571142391049" class="ta-btn ta-btn-solid">Reserve a seat in As-Saadah →</a>
-        <a href="https://www.linkedin.com/newsletters/prompt-engineering-first%E2%84%A2-7467926742326861824/" class="ta-btn ta-btn-ghost">Subscribe on LinkedIn</a>
-      </div>
-    </div>
-
-    <!-- SIGN OFF -->
-    <div class="signoff" id="signoffArea">
-      Thank you for reading every issue. Thank you for showing up. And thank you — genuinely — for taking five minutes to tell me what you actually need.<br><br>
-      <strong>The next issue returns to teaching. But it'll be better because of this one.</strong>
-      <div class="s-name">SAK Hashmi</div>
-      <div class="s-title">Founder, SAKCOACHING · Creator, Prompt Engineering First™</div>
-    </div>
-
-  </div><!-- /body -->
-
-  <!-- FOOTER -->
-  <div class="efooter">
-    <p>© 2026 SAKCOACHING · <a href="#">Prompt Engineering First™</a> · <a href="mailto:sak@sakcoaching.com">sak@sakcoaching.com</a></p>
-    <p style="margin-top:6px">You're receiving this because you subscribed. · <a href="#">Unsubscribe</a></p>
-  </div>
-
-</div><!-- /wrap -->
-
+    <p class="err" id="err" role="alert"></p>
+    <button type="submit" id="btn">Send My Roadmap</button>
+    <p class="trust">No spam. Unsubscribe anytime.</p>
+  </form>
+</main>
 <script>
-  // ── OPTION SELECTION ──
-  document.querySelectorAll('.options').forEach(group => {
-    const type = group.dataset.type;
-    group.querySelectorAll('.opt').forEach(opt => {
-      opt.addEventListener('click', () => {
-        if (type === 'radio') {
-          group.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
-        } else {
-          opt.classList.toggle('selected');
-        }
-        updateProgress();
-      });
+/* ===== CONFIG: edit here ===== */
+const BRAND_NAME = "Tecno Zone Discovery";
+const SUBSCRIBE_ENDPOINT = "/api/subscribe"; // Vercel serverless function (see api/subscribe.js)
+const NEXT_PAGE = "discovery.html";
+/* ============================= */
+
+const f = document.getElementById("f"), btn = document.getElementById("btn"), err = document.getElementById("err");
+
+function go(name, topic){
+  location.href = NEXT_PAGE + "?name=" + encodeURIComponent(name) + "&topic=" + encodeURIComponent(topic);
+}
+
+f.addEventListener("submit", async function(e){
+  e.preventDefault();
+  const name = f.name.value.trim(), email = f.email.value.trim(), topic = f.topic.value;
+  if(!name){ err.textContent = "Enter your first name."; f.name.focus(); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent = "Enter a valid email address."; f.email.focus(); return; }
+  err.textContent = "";
+  btn.disabled = true; btn.textContent = "Sending...";
+  const ctrl = new AbortController();
+  const t = setTimeout(function(){ ctrl.abort(); }, 6000);
+  try{
+    await fetch(SUBSCRIBE_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({name: name, email: email, topic: topic}),
+      signal: ctrl.signal
     });
-  });
-
-  // ── SCALE SELECTION ──
-  function selectScale(btn, q) {
-    document.querySelectorAll(`.scale-wrap[data-q="${q}"] .scale-btn`)
-      .forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    updateProgress();
-  }
-
-  // ── PROGRESS ──
-  function updateProgress() {
-    let answered = 0;
-    const total = 13;
-
-    // radio groups
-    ['q1','q2','q3','q4','q8','q10'].forEach(q => {
-      if (document.querySelector(`.opt.selected input[name="${q}"]`)) answered++;
-    });
-    // checkbox groups (any selected = answered)
-    ['q5','q7','q11'].forEach(q => {
-      if (document.querySelector(`.opt.selected input[name="${q}"]`)) answered++;
-    });
-    // scales
-    ['q6','q12'].forEach(q => {
-      if (document.querySelector(`.scale-wrap[data-q="${q}"] .scale-btn.selected`)) answered++;
-    });
-    // text areas
-    ['q9','q13'].forEach(q => {
-      const ta = document.querySelector(`textarea[name="${q}"]`);
-      if (ta && ta.value.trim().length > 2) answered++;
-    });
-
-    const pct = Math.round((answered / total) * 100);
-    document.getElementById('pfill').style.width = pct + '%';
-    document.getElementById('ppct').textContent = pct + '%';
-    document.getElementById('qcur').textContent = answered;
-  }
-
-  document.querySelectorAll('textarea').forEach(ta => {
-    ta.addEventListener('input', updateProgress);
-  });
-
-  // ── SUBMIT ──
-  function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('surveyForm').style.display = 'none';
-    document.getElementById('thankyou').style.display = 'block';
-    document.getElementById('signoffArea').style.display = 'none';
-    document.querySelector('.progress-bar-wrap').style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  }catch(_){ /* never block the visitor */ }
+  clearTimeout(t);
+  go(name, topic);
+});
 </script>
-
 </body>
 </html>
