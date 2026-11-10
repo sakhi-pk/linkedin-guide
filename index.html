@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Your Custom Roadmap | Tecno Zone Discovery</title>
+<meta name="description" content="Get a custom roadmap for growing your LinkedIn, sent straight to your inbox. Then complete the 32-question LinkedIn questionnaire.">
+<meta property="og:title" content="Get Your Custom Roadmap | Tecno Zone Discovery">
+<meta property="og:description" content="Get a custom roadmap for growing your LinkedIn, sent straight to your inbox.">
+<meta property="og:type" content="website">
+<style>
+:root{--bg:#0b1f3a;--panel:#12294a;--text:#f3f6fb;--muted:#b7c3d6;--line:#2b4468;--accent:#ffc233;--on-accent:#1a1300;--err:#ff8a8a}
+@media (prefers-color-scheme:light){:root{--bg:#f4f7fc;--panel:#fff;--text:#0b1f3a;--muted:#46587a;--line:#c9d4e6;--accent:#0b1f3a;--on-accent:#fff;--err:#b3261e}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 18px;background:var(--bg);color:var(--text);font:18px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{width:100%;max-width:760px}
+h1{font-size:clamp(1.9rem,6.5vw,2.7rem);line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 20px}
+ul{list-style:none;padding:0;margin:0 0 26px}
+li{padding-left:30px;position:relative;margin:8px 0}
+li::before{content:"";position:absolute;left:4px;top:.45em;width:12px;height:7px;border-left:3px solid var(--accent);border-bottom:3px solid var(--accent);transform:rotate(-45deg)}
+form{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+label{display:block;font-weight:600;font-size:.95rem;margin:0 0 6px}
+.f{margin-bottom:16px}
+input,select{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:14px;min-height:52px}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+button{width:100%;min-height:56px;font:inherit;font-weight:700;font-size:1.1rem;color:var(--on-accent);background:var(--accent);border:0;border-radius:12px;cursor:pointer}
+button[disabled]{opacity:.7;cursor:wait}
+.err{color:var(--err);font-size:.9rem;min-height:1.2em;margin:4px 0 0}
+.trust{text-align:center;color:var(--muted);font-size:.9rem;margin:14px 0 0}
+
+/* ===== Tabs + Questionnaire + Payment (prefix le-) ===== */
+.le-wrap textarea{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:96px;resize:vertical}
+.le-wrap textarea:focus{outline:3px solid var(--accent);outline-offset:2px}
+.le-wrap form{background:none;border:0;padding:0;border-radius:0}
+.le-tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px;margin:0 0 18px}
+.le-tab{flex:1;width:auto;min-height:52px;border-radius:10px;background:transparent;color:var(--muted);font-size:.95rem;padding:6px 8px}
+.le-tab[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.le-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.le-progress{margin-bottom:18px}
+.le-progress-top{display:flex;justify-content:space-between;gap:8px;font-size:.9rem;color:var(--muted);margin-bottom:6px;flex-wrap:wrap}
+.le-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.le-bar>i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.le-sec{border:0;margin:0;padding:0;min-width:0}
+.le-sec legend{font-size:1.25rem;font-weight:800;padding:0;margin-bottom:4px}
+.le-sec-sub{margin:0 0 18px;color:var(--muted);font-size:.95rem}
+.le-q{margin-bottom:20px}
+.le-q label,.le-lbl{display:block;font-weight:700;font-size:.97rem;margin-bottom:6px}
+.le-req{color:var(--err)}
+.le-hint{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.le-q input[type=text],.le-q input[type=url],.le-field input[type=text]{font-size:1rem;padding:12px 14px;min-height:50px}
+.le-q select{font-size:1rem;padding:12px 14px;min-height:50px}
+.le-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:6px}
+.le-opt{display:flex;align-items:center;gap:10px;min-height:48px;padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer;font-weight:500;margin:0}
+.le-opt input{width:20px;height:20px;min-height:0;padding:0;flex:none;accent-color:var(--accent)}
+.le-wrap .le-invalid{border-color:var(--err)}
+.le-err{color:var(--err);font-size:.88rem;margin:4px 0 0}
+.le-err:empty{display:none}
+.le-nav{display:flex;gap:10px;justify-content:space-between;margin-top:8px;flex-wrap:wrap}
+.le-btn{width:auto;min-height:48px;padding:10px 22px;font-size:1rem;border-radius:12px;border:2px solid var(--accent);background:transparent;color:var(--text);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;font-weight:700}
+.le-btn.le-primary{background:var(--accent);color:var(--on-accent)}
+.le-btn.le-sm{min-height:44px;padding:8px 14px;font-size:.95rem}
+.le-btn.le-block{width:100%;min-height:56px;font-size:1.1rem}
+.le-btn[disabled]{opacity:.6;cursor:not-allowed}
+.le-linkbtn{width:auto;min-height:44px;padding:0 4px;background:none;border:0;color:var(--muted);font-size:.95rem;font-weight:600;text-decoration:underline;border-radius:6px}
+.le-price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 6px}
+.le-price strong{font-size:2rem}
+.le-badge{background:var(--accent);color:var(--on-accent);font-weight:800;font-size:.72rem;border-radius:99px;padding:3px 10px;text-transform:uppercase;letter-spacing:.04em}
+.le-list{margin:12px 0 0}
+.le-list li{color:var(--muted);margin:4px 0}
+.le-step{display:flex;gap:12px;align-items:center;margin:22px 0 10px}
+.le-step b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:.95rem}
+.le-step h3{margin:0;font-size:1.08rem}
+.le-pay{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--bg);border:1px dashed var(--accent);border-radius:12px;padding:12px 14px}
+.le-pay code{font-size:1.25rem;font-weight:800;letter-spacing:.04em}
+.le-field{margin-bottom:18px}
+.le-seg{display:flex;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:5px;margin-bottom:10px}
+.le-seg button{flex:1;width:auto;min-height:44px;font-size:.95rem;border-radius:8px;background:transparent;color:var(--muted)}
+.le-seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.le-wrap input[type=file]{min-height:0;padding:10px;font-size:.95rem}
+.le-preview{margin-top:8px;max-width:100%;max-height:220px;border-radius:10px;border:1px solid var(--line);display:none}
+.le-file-info{font-size:.9rem;color:var(--muted);margin:6px 0 0}
+.le-privacy,.le-note,.le-ok-note{font-size:.88rem;color:var(--muted);margin:12px 0 0}
+.le-warn{background:rgba(255,194,51,.12);border:1px solid rgba(255,194,51,.55);border-radius:10px;padding:10px 12px;font-size:.92rem;margin-bottom:16px}
+.le-done{background:rgba(46,160,120,.14);border:1px solid rgba(46,160,120,.55);border-radius:12px;padding:16px;margin-top:18px}
+.le-done h3{margin:0 0 6px;font-size:1.1rem}
+.le-done p{margin:0;font-size:.95rem}
+.le-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.le-foot{text-align:center;color:var(--muted);font-size:.9rem;margin-top:22px}
+.le-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:420px){.le-card{padding:16px}.le-tab{font-size:.82rem;padding:6px 4px}}
+</style>
+</head>
+<body>
+<main class="le-wrap" id="le-root">
+  <h1>Get Your Custom LinkedIn Growth Roadmap</h1>
+
+  <div class="le-tabs" role="tablist" aria-label="LinkedIn guide sections">
+    <button type="button" class="le-tab" role="tab" id="le-tab-r" aria-controls="le-panel-r" aria-selected="true">1 · Roadmap</button>
+    <button type="button" class="le-tab" role="tab" id="le-tab-q" aria-controls="le-panel-q" aria-selected="false" tabindex="-1">2 · Questionnaire</button>
+    <button type="button" class="le-tab" role="tab" id="le-tab-p" aria-controls="le-panel-p" aria-selected="false" tabindex="-1">3 · Payment</button>
+  </div>
+
+  <!-- TAB 1: existing opt-in (app launch option removed) -->
+  <section role="tabpanel" id="le-panel-r" aria-labelledby="le-tab-r">
+    <p class="sub">Tell us where you are and get a step-by-step plan in your inbox within minutes.</p>
+    <ul>
+      <li>A clear plan matched to your goal</li>
+      <li>The exact next steps, in order</li>
+      <li>A short video walkthrough to start today</li>
+    </ul>
+    <form id="f" novalidate>
+      <div class="f">
+        <label for="name">First name</label>
+        <input id="name" name="name" type="text" autocomplete="given-name" required>
+      </div>
+      <div class="f">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <button type="submit" id="btn">Send My Roadmap</button>
+      <p class="trust">No spam. Unsubscribe anytime.</p>
+    </form>
+  </section>
+
+  <!-- TAB 2: 32-question questionnaire -->
+  <section class="le-card" role="tabpanel" id="le-panel-q" aria-labelledby="le-tab-q" hidden>
+    <div class="le-progress">
+      <div class="le-progress-top"><span id="le-step-label"></span><span id="le-count-label"></span></div>
+      <div class="le-bar" aria-hidden="true"><i id="le-bar-fill"></i></div>
+    </div>
+    <form id="le-qform" novalidate></form>
+    <div class="le-nav">
+      <button type="button" class="le-btn" id="le-back">Back</button>
+      <button type="button" class="le-btn le-primary" id="le-next">Next</button>
+    </div>
+    <p class="le-ok-note">Your answers are saved in this browser as you type.</p>
+    <button type="button" class="le-linkbtn" id="le-reset">Start again</button>
+  </section>
+
+  <!-- TAB 3: payment + answers -->
+  <section class="le-card" role="tabpanel" id="le-panel-p" aria-labelledby="le-tab-p" hidden>
+    <div class="le-price"><strong id="le-price"></strong><span class="le-badge">LinkedIn Playbook</span></div>
+    <p id="le-delivery" style="margin:0;color:var(--muted)"></p>
+    <ul class="le-list">
+      <li>Headline formulas for your niche</li>
+      <li>About section template</li>
+      <li>Featured section setup</li>
+      <li>30-day content plan</li>
+    </ul>
+
+    <div class="le-step"><b>1</b><h3>Send the payment via Easypaisa</h3></div>
+    <div class="le-pay">
+      <span>Send <strong id="le-price2"></strong> to</span>
+      <code id="le-ep-number"></code>
+      <button type="button" class="le-btn le-sm" id="le-copy-num">Copy number</button>
+      <span id="le-copy-msg" role="status" aria-live="polite" style="font-weight:700"></span>
+    </div>
+    <p id="le-ep-name" style="margin:8px 0 0;color:var(--muted)" hidden></p>
+
+    <div class="le-step"><b>2</b><h3>Send your payment proof and answers</h3></div>
+    <div class="le-warn" id="le-incomplete" hidden>Your questionnaire is not finished yet. Complete it in tab 2, or paste or upload answers you already wrote.</div>
+    <form id="le-pform" novalidate>
+      <div class="le-field">
+        <label for="le-name">Your name <span class="le-req" aria-hidden="true">*</span></label>
+        <input type="text" id="le-name" autocomplete="name" aria-describedby="le-name-err">
+        <p class="le-err" id="le-name-err" role="alert"></p>
+      </div>
+      <div class="le-field">
+        <label for="le-tid">Easypaisa Transaction ID (TID) <span class="le-req" aria-hidden="true">*</span></label>
+        <input type="text" id="le-tid" inputmode="numeric" autocomplete="off" aria-describedby="le-tid-err">
+        <p class="le-err" id="le-tid-err" role="alert"></p>
+      </div>
+      <div class="le-field">
+        <label for="le-shot">Payment screenshot <span class="le-hint" style="display:inline">(optional, max 5 MB)</span></label>
+        <input type="file" id="le-shot" accept="image/*" aria-describedby="le-shot-err">
+        <img id="le-shot-prev" class="le-preview" alt="Payment screenshot preview">
+        <p class="le-err" id="le-shot-err" role="alert"></p>
+      </div>
+
+      <div class="le-field">
+        <span class="le-lbl" id="le-ans-lbl">Your questionnaire answers <span class="le-req" aria-hidden="true">*</span></span>
+        <div class="le-seg" role="group" aria-labelledby="le-ans-lbl">
+          <button type="button" id="le-mode-paste" aria-pressed="true">Paste answers</button>
+          <button type="button" id="le-mode-upload" aria-pressed="false">Upload a file</button>
+        </div>
+        <div id="le-paste-box">
+          <label for="le-answers" class="le-sr">Paste your answers</label>
+          <textarea id="le-answers" rows="8" placeholder="Paste your answers here, or tap the button below to fill them from the questionnaire." aria-describedby="le-ans-err"></textarea>
+          <button type="button" class="le-btn le-sm" id="le-fill" style="margin-top:8px">Fill from my questionnaire</button>
+        </div>
+        <div id="le-upload-box" hidden>
+          <label for="le-ansfile" class="le-sr">Upload your answers file</label>
+          <input type="file" id="le-ansfile" accept=".txt,.md,.pdf,.doc,.docx,.rtf" aria-describedby="le-ans-err">
+          <p class="le-file-info" id="le-ansfile-info">Accepted: TXT, MD, PDF, DOC, DOCX, RTF. Max 5 MB.</p>
+        </div>
+        <p class="le-err" id="le-ans-err" role="alert"></p>
+      </div>
+
+      <button type="submit" class="le-btn le-primary le-block" id="le-submit">Submit Payment Proof</button>
+      <p class="le-privacy">Your payment details are shared only with Sak Hashmi on WhatsApp.</p>
+    </form>
+
+    <div class="le-done" id="le-done" hidden role="status" aria-live="polite">
+      <h3>Thanks! Your payment is being verified.</h3>
+      <p id="le-done-text"></p>
+      <p id="le-done-note" style="margin-top:8px;color:var(--muted)"></p>
+      <div class="le-row">
+        <a class="le-btn le-primary le-sm" id="le-resend" href="#" target="_blank" rel="noopener">Re-send on WhatsApp</a>
+        <button type="button" class="le-btn le-sm" id="le-dl">Download my answers</button>
+      </div>
+    </div>
+    <button type="button" class="le-linkbtn" id="le-back-q" style="margin-top:12px">Back to questionnaire</button>
+  </section>
+
+  <p class="le-note" style="text-align:center">Your answers feed an initial strategic brief. It is not a live profile audit or a guaranteed result. Payments are verified manually by Sak Hashmi.</p>
+  <div class="le-foot">Learn • Position • Optimize • Publish • Grow</div>
+</main>
+
+<!-- Existing opt-in logic (topic fixed to LinkedIn since the app launch option was removed) -->
+<script>
+/* ===== CONFIG: edit here ===== */
+const BRAND_NAME = "Tecno Zone Discovery";
+const SUBSCRIBE_ENDPOINT = "/api/subscribe"; // Vercel serverless function (see api/subscribe.js)
+const NEXT_PAGE = "discovery.html";
+const TOPIC = "linkedin";
+/* ============================= */
+
+const f = document.getElementById("f"), btn = document.getElementById("btn"), err = document.getElementById("err");
+
+function go(name, topic){
+  location.href = NEXT_PAGE + "?name=" + encodeURIComponent(name) + "&topic=" + encodeURIComponent(topic);
+}
+
+f.addEventListener("submit", async function(e){
+  e.preventDefault();
+  const name = f.name.value.trim(), email = f.email.value.trim(), topic = TOPIC;
+  if(!name){ err.textContent = "Enter your first name."; f.name.focus(); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent = "Enter a valid email address."; f.email.focus(); return; }
+  err.textContent = "";
+  btn.disabled = true; btn.textContent = "Sending...";
+  const ctrl = new AbortController();
+  const t = setTimeout(function(){ ctrl.abort(); }, 6000);
+  try{
+    await fetch(SUBSCRIBE_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({name: name, email: email, topic: topic}),
+      signal: ctrl.signal
+    });
+  }catch(_){ /* never block the visitor */ }
+  clearTimeout(t);
+  go(name, topic);
+});
+</script>
+
+<script id="le-script">
+(function () {
+  'use strict';
+
+  /* ===== CONFIG: edit here ===== */
+  var CONFIG = {
+    whatsappNumber: "923313506805",   // international format, no + or spaces
+    easypaisaNumber: "03313506805",
+    easypaisaAccountName: "",         // owner fills in; shown only if not empty
+    playbookPrice: "PKR 999.99",
+    deliveryNote: "Delivered within 24 hours after payment verification."
+  };
+  /* ============================= */
+
+  var STORE_KEY = "le_answers_v1";
+  var MAX_BYTES = 5 * 1024 * 1024;
+  var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var SECTIONS = [
+    { t: "Identity & Niche", s: "Who you are and where you play." },
+    { t: "Your Audience", s: "Who should find and trust your profile." },
+    { t: "Your Offer", s: "What you want LinkedIn to sell for you." },
+    { t: "Your Profile Today", s: "Where your profile stands right now." },
+    { t: "Content", s: "What you can publish consistently." },
+    { t: "Network & Engagement", s: "How you show up beyond your own posts." },
+    { t: "Final Details", s: "Anything we should respect or avoid." }
+  ];
+
+  var INDUSTRIES = ["Software & IT","AI & Data","Digital Marketing","Education & Training","Finance & Accounting","Healthcare","Real Estate","E-commerce & Retail","Manufacturing & Engineering","Consulting","Legal","HR & Recruitment","Design & Creative","Construction","Hospitality & Travel","Non-profit","Freelancing","Other"];
+
+  // type: text | url | textarea | select | multi ; r = required
+  var Q = [
+    // 1. Identity & Niche (6)
+    { s:0, id:"name", type:"text", r:1, l:"Full name", ph:"As you want it on LinkedIn" },
+    { s:0, id:"role", type:"text", r:1, l:"Current job title or role", ph:"e.g. Software Engineer, Founder, HR Manager" },
+    { s:0, id:"field", type:"text", r:1, l:"Your field or industry", list:INDUSTRIES, ph:"Start typing or pick one" },
+    { s:0, id:"niche", type:"textarea", r:1, l:"Your niche in one sentence", h:"Format: I help [who] to [get what result] using [your method or skill].", ph:"I help clinic owners in Lahore get more patients using Google and LinkedIn content." },
+    { s:0, id:"years", type:"select", l:"Years of experience in this field", opts:["Under 1 year","1 to 3 years","3 to 5 years","5 to 10 years","10+ years"] },
+    { s:0, id:"goal", type:"select", r:1, l:"Your main LinkedIn goal for the next 90 days", opts:["Win clients or projects","Get a job or a better role","Build authority and an audience","Generate leads for my company","Hire talent or recruit","Sell digital products or courses","Other"] },
+    // 2. Audience (5)
+    { s:1, id:"icp", type:"textarea", r:1, l:"Who is your ideal reader or client?", h:"Job titles, industries, company size, seniority.", ph:"Founders of 10 to 50 person software companies in KSA and Pakistan." },
+    { s:1, id:"pains", type:"textarea", r:1, l:"What are their top 3 problems?", h:"Use their words, not yours.", ph:"1) ... 2) ... 3) ..." },
+    { s:1, id:"markets", type:"text", l:"Which countries or cities do you want to reach?", ph:"e.g. Pakistan, Saudi Arabia, UAE, UK" },
+    { s:1, id:"keywords", type:"textarea", l:"5 to 10 keywords your audience would search", h:"These go into your headline, About and Skills.", ph:"Oracle ERP consultant, Python trainer, prompt engineering..." },
+    { s:1, id:"peers", type:"textarea", l:"3 LinkedIn profiles in your field you admire", h:"Names or profile links. We learn from them, we do not copy them.", ph:"Name or URL, one per line" },
+    // 3. Offer (5)
+    { s:2, id:"offer", type:"textarea", r:1, l:"What do you offer?", h:"Services, products, courses, or the role you want.", ph:"Describe each offer in one line." },
+    { s:2, id:"result", type:"textarea", r:1, l:"What result or transformation do clients get?", h:"Be specific and honest. Only state results you can show.", ph:"From X to Y in Z time." },
+    { s:2, id:"engagement", type:"multi", l:"How do people work with you?", opts:["One-off projects","Monthly retainer","Training or courses","Digital products","Salaried role","Not sure yet"] },
+    { s:2, id:"proof", type:"textarea", l:"What proof do you have?", h:"Real projects, clients, certifications, numbers, awards, publications. Leave blank if none yet.", ph:"List only what is true and verifiable." },
+    { s:2, id:"cta", type:"text", r:1, l:"What one action should a profile visitor take?", ph:"e.g. Message me, book a call, download the guide, visit my website" },
+    // 4. Profile today (7)
+    { s:3, id:"url", type:"url", l:"Your LinkedIn profile URL", ph:"https://www.linkedin.com/in/your-name" },
+    { s:3, id:"headline", type:"textarea", l:"Your current headline (paste it)", ph:"Paste exactly what it says today" },
+    { s:3, id:"about", type:"textarea", l:"Your current About section (paste it)", ph:"Paste exactly what it says today, or write 'empty'" },
+    { s:3, id:"visuals", type:"select", l:"Profile photo and banner", opts:["Professional photo and custom banner","Photo only","Banner only","Neither, still default"] },
+    { s:3, id:"featured", type:"textarea", l:"What is in your Featured section today?", ph:"Links, posts, files, or 'nothing yet'" },
+    { s:3, id:"experience", type:"select", l:"State of your Experience section", opts:["Complete, with achievements","Complete, but only job duties","Partly complete","Mostly empty"] },
+    { s:3, id:"extras", type:"text", l:"Skills, recommendations and certifications you have", ph:"e.g. 30 skills, 2 recommendations, 3 certificates" },
+    // 5. Content (5)
+    { s:4, id:"freq", type:"select", l:"How often do you post now?", opts:["Never","A few times a month","1 to 2 times a week","3 to 5 times a week","Daily"] },
+    { s:4, id:"pillars", type:"textarea", l:"3 to 5 topics you can talk about with authority", h:"These become your content pillars.", ph:"e.g. Python for beginners, AI workflows, client acquisition" },
+    { s:4, id:"formats", type:"multi", l:"Formats you are comfortable with", opts:["Text posts","Carousels or PDFs","Short video","Polls","Newsletter","Live or audio events","Images or infographics"] },
+    { s:4, id:"best", type:"textarea", l:"Your best-performing post, and why you think it worked", ph:"Paste a link or describe it. Write 'none yet' if needed." },
+    { s:4, id:"time", type:"select", l:"Time you can give LinkedIn each week", opts:["Under 2 hours","2 to 4 hours","5 to 7 hours","8 hours or more"] },
+    // 6. Network (3)
+    { s:5, id:"network", type:"text", l:"Approx. connections and followers", ph:"e.g. 1,800 connections, 2,400 followers" },
+    { s:5, id:"comments", type:"select", l:"How often do you comment on other people's posts?", opts:["Daily","A few times a week","Rarely","Never"] },
+    { s:5, id:"targets", type:"textarea", l:"Target companies, people or groups to engage with", ph:"Names, one per line" },
+    // 7. Final (1)
+    { s:6, id:"notes", type:"textarea", l:"Anything else we should know?", h:"Tone, languages, words to avoid, deadlines, constraints.", ph:"e.g. Write in simple English, avoid hype, Urdu captions welcome" }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var ans = {};
+  var step = 0;
+
+  /* ---------- storage (answers only, never payment details) ---------- */
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) { var o = JSON.parse(raw); if (o && typeof o === "object") { ans = o.a || {}; step = Math.min(Math.max(o.step | 0, 0), SECTIONS.length - 1); } }
+    } catch (e) { ans = {}; }
+  }
+  function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify({ a: ans, step: step })); } catch (e) {} }
+  function clearStore() { try { localStorage.removeItem(STORE_KEY); } catch (e) {} }
+
+  /* ---------- render questionnaire ---------- */
+  var form = $("le-qform");
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+
+  function build() {
+    form.textContent = "";
+    SECTIONS.forEach(function (sec, si) {
+      var fs = el("fieldset", "le-sec");
+      fs.id = "le-sec-" + si;
+      fs.hidden = si !== step;
+      fs.appendChild(el("legend", "", (si + 1) + ". " + sec.t));
+      fs.appendChild(el("p", "le-sec-sub", sec.s));
+      Q.forEach(function (q, qi) { if (q.s === si) fs.appendChild(buildQ(q, qi + 1)); });
+      form.appendChild(fs);
+    });
+  }
+
+  function labelEl(q, num, forId) {
+    var lab = el(forId ? "label" : "span", forId ? "" : "le-lbl");
+    if (forId) lab.setAttribute("for", forId);
+    lab.appendChild(document.createTextNode(num + ". " + q.l + " "));
+    if (q.r) { var s = el("span", "le-req", "*"); s.setAttribute("aria-hidden", "true"); lab.appendChild(s); }
+    if (q.h) lab.appendChild(el("span", "le-hint", q.h));
+    return lab;
+  }
+
+  function buildQ(q, num) {
+    var wrap = el("div", "le-q");
+    var fid = "le-f-" + q.id, eid = "le-e-" + q.id, input;
+    var err = el("p", "le-err"); err.id = eid; err.setAttribute("role", "alert");
+
+    if (q.type === "multi") {
+      wrap.setAttribute("role", "group");
+      var lab = labelEl(q, num, null); lab.id = "le-l-" + q.id;
+      wrap.setAttribute("aria-labelledby", lab.id);
+      wrap.appendChild(lab);
+      var box = el("div", "le-opts");
+      var cur = Array.isArray(ans[q.id]) ? ans[q.id] : [];
+      q.opts.forEach(function (o, i) {
+        var l = el("label", "le-opt");
+        var cb = document.createElement("input");
+        cb.type = "checkbox"; cb.value = o; cb.id = fid + "-" + i; cb.checked = cur.indexOf(o) > -1;
+        cb.addEventListener("change", function () {
+          var vals = [];
+          box.querySelectorAll("input:checked").forEach(function (c) { vals.push(c.value); });
+          ans[q.id] = vals; save(); refreshCount();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(o));
+        box.appendChild(l);
+      });
+      wrap.appendChild(box);
+      wrap.appendChild(err);
+      return wrap;
+    }
+
+    wrap.appendChild(labelEl(q, num, fid));
+    if (q.type === "textarea") { input = document.createElement("textarea"); input.rows = 3; }
+    else if (q.type === "select") {
+      input = document.createElement("select");
+      var ph = document.createElement("option"); ph.value = ""; ph.textContent = "Select one"; input.appendChild(ph);
+      q.opts.forEach(function (o) { var op = document.createElement("option"); op.value = o; op.textContent = o; input.appendChild(op); });
+    } else {
+      input = document.createElement("input");
+      input.type = q.type === "url" ? "url" : "text";
+      if (q.type === "url") input.inputMode = "url";
+      if (q.list) {
+        var dl = document.createElement("datalist"); dl.id = fid + "-dl";
+        q.list.forEach(function (o) { var op = document.createElement("option"); op.value = o; dl.appendChild(op); });
+        wrap.appendChild(dl); input.setAttribute("list", dl.id);
+      }
+    }
+    input.id = fid;
+    if (q.ph && q.type !== "select") input.placeholder = q.ph;
+    input.setAttribute("aria-describedby", eid);
+    if (q.r) input.setAttribute("aria-required", "true");
+    if (typeof ans[q.id] === "string") input.value = ans[q.id];
+    input.addEventListener(q.type === "select" ? "change" : "input", function () {
+      ans[q.id] = input.value; save(); refreshCount(); input.classList.remove("le-invalid"); err.textContent = "";
+    });
+    wrap.appendChild(input);
+    wrap.appendChild(err);
+    return wrap;
+  }
+
+  /* ---------- validation ---------- */
+  function val(q) {
+    var v = ans[q.id];
+    if (Array.isArray(v)) return v.join(", ");
+    return (v || "").toString().trim();
+  }
+
+  function validateSection(si) {
+    var firstBad = null;
+    Q.forEach(function (q) {
+      if (q.s !== si) return;
+      var err = $("le-e-" + q.id), v = val(q), msg = "";
+      if (q.r && !v) msg = "This question is required.";
+      else if (q.type === "url" && v && !/^https?:\/\/[^\s.]+\.[^\s]+$/i.test(v)) msg = "Enter a full link starting with https://";
+      else if (q.id === "name" && v.length < 2) msg = "Enter at least 2 characters.";
+      err.textContent = msg;
+      var inp = $("le-f-" + q.id);
+      if (inp) inp.classList.toggle("le-invalid", !!msg);
+      if (msg && inp && !firstBad) firstBad = inp;
+    });
+    if (firstBad) { firstBad.focus(); return false; }
+    return true;
+  }
+
+  /* ---------- progress / navigation ---------- */
+  function answeredCount() { return Q.filter(function (q) { return val(q) !== ""; }).length; }
+
+  function refreshCount() {
+    var n = answeredCount();
+    $("le-count-label").textContent = n + " of " + Q.length + " answered";
+    $("le-bar-fill").style.width = Math.round((n / Q.length) * 100) + "%";
+  }
+
+  function showStep(i, scroll) {
+    step = i;
+    SECTIONS.forEach(function (_, si) { $("le-sec-" + si).hidden = si !== step; });
+    $("le-step-label").textContent = "Section " + (step + 1) + " of " + SECTIONS.length + ": " + SECTIONS[step].t;
+    $("le-back").hidden = step === 0;
+    $("le-next").textContent = step === SECTIONS.length - 1 ? "Finish and go to payment" : "Next";
+    refreshCount(); save();
+    if (scroll) $("le-root").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
+  }
+
+  $("le-next").addEventListener("click", function () {
+    if (!validateSection(step)) return;
+    if (step < SECTIONS.length - 1) showStep(step + 1, true);
+    else selectTab("p");
+  });
+  $("le-back").addEventListener("click", function () { if (step > 0) showStep(step - 1, true); });
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+
+  var resetArmed = false, resetTimer;
+  $("le-reset").addEventListener("click", function () {
+    var b = $("le-reset");
+    if (!resetArmed) {
+      resetArmed = true; b.textContent = "Tap again to erase all answers";
+      resetTimer = setTimeout(function () { resetArmed = false; b.textContent = "Start again"; }, 4000);
+      return;
+    }
+    clearTimeout(resetTimer); resetArmed = false; b.textContent = "Start again";
+    ans = {}; step = 0; clearStore(); build(); showStep(0, true); resetProof();
+  });
+
+  /* ---------- tabs ---------- */
+  var ORDER = ["r", "q", "p"];
+  var tabs = { r: $("le-tab-r"), q: $("le-tab-q"), p: $("le-tab-p") };
+  var panels = { r: $("le-panel-r"), q: $("le-panel-q"), p: $("le-panel-p") };
+
+  function selectTab(k, focus) {
+    ORDER.forEach(function (key) {
+      var on = key === k;
+      tabs[key].setAttribute("aria-selected", on ? "true" : "false");
+      tabs[key].tabIndex = on ? 0 : -1;
+      panels[key].hidden = !on;
+    });
+    if (k === "p") enterPayment();
+    if (focus) tabs[k].focus();
+    try { history.replaceState(null, "", k === "r" ? location.pathname + location.search : "#" + (k === "q" ? "questionnaire" : "payment")); } catch (e) {}
+    $("le-root").scrollIntoView({ behavior: "auto", block: "start" });
+  }
+  ORDER.forEach(function (k, i) {
+    tabs[k].addEventListener("click", function () { selectTab(k); });
+    tabs[k].addEventListener("keydown", function (e) {
+      var n = null;
+      if (e.key === "ArrowRight") n = ORDER[(i + 1) % ORDER.length];
+      else if (e.key === "ArrowLeft") n = ORDER[(i + ORDER.length - 1) % ORDER.length];
+      else if (e.key === "Home") n = ORDER[0];
+      else if (e.key === "End") n = ORDER[ORDER.length - 1];
+      if (n) { e.preventDefault(); selectTab(n, true); }
+    });
+  });
+  $("le-back-q").addEventListener("click", function () { selectTab("q"); });
+
+  /* ---------- compile answers ---------- */
+  function compileAnswers() {
+    var out = ["LINKEDIN ENGINE OS | QUESTIONNAIRE ANSWERS", "Name: " + (val(Q[0]) || "(not given)"), ""];
+    SECTIONS.forEach(function (sec, si) {
+      out.push("== " + (si + 1) + ". " + sec.t.toUpperCase() + " ==");
+      Q.forEach(function (q, qi) {
+        if (q.s !== si) return;
+        out.push("Q" + (qi + 1) + ". " + q.l);
+        out.push(val(q) || "(not answered)");
+        out.push("");
+      });
+    });
+    return out.join("\n");
+  }
+
+  /* ---------- payment tab ---------- */
+  var mode = "paste";
+  var shotFile = null, ansFile = null, shotURL = null;
+  var lastMessage = "", lastAnswersText = "";
+  var FILE_INFO = "Accepted: TXT, MD, PDF, DOC, DOCX, RTF. Max 5 MB.";
+
+  function fillConfig() {
+    $("le-price").textContent = CONFIG.playbookPrice;
+    $("le-price2").textContent = CONFIG.playbookPrice;
+    $("le-delivery").textContent = CONFIG.deliveryNote;
+    $("le-ep-number").textContent = CONFIG.easypaisaNumber;
+    if (CONFIG.easypaisaAccountName) {
+      var p = $("le-ep-name"); p.hidden = false; p.textContent = "Account name: " + CONFIG.easypaisaAccountName;
+    }
+  }
+
+  function enterPayment() {
+    var requiredDone = Q.every(function (q) { return !q.r || val(q) !== ""; });
+    $("le-incomplete").hidden = requiredDone;
+    if (!$("le-name").value.trim() && val(Q[0])) $("le-name").value = val(Q[0]);
+    if (mode === "paste" && !$("le-answers").value.trim() && answeredCount() > 0) $("le-answers").value = compileAnswers();
+  }
+
+  function setMode(m) {
+    mode = m;
+    $("le-mode-paste").setAttribute("aria-pressed", m === "paste");
+    $("le-mode-upload").setAttribute("aria-pressed", m === "upload");
+    $("le-paste-box").hidden = m !== "paste";
+    $("le-upload-box").hidden = m !== "upload";
+    $("le-ans-err").textContent = "";
+  }
+  $("le-mode-paste").addEventListener("click", function () { setMode("paste"); });
+  $("le-mode-upload").addEventListener("click", function () { setMode("upload"); });
+
+  $("le-fill").addEventListener("click", function () {
+    if (answeredCount() === 0) { $("le-ans-err").textContent = "You have not answered any questions yet. Complete tab 2 or paste your own answers."; return; }
+    $("le-answers").value = compileAnswers(); $("le-ans-err").textContent = "";
+  });
+
+  function fmtSize(b) { return b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB"; }
+
+  $("le-shot").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0], er = $("le-shot-err"), img = $("le-shot-prev");
+    er.textContent = ""; img.style.display = "none"; shotFile = null;
+    if (shotURL) { URL.revokeObjectURL(shotURL); shotURL = null; }
+    if (!f) return;
+    if (f.type.indexOf("image/") !== 0) { er.textContent = "Please choose an image file (PNG or JPG)."; e.target.value = ""; return; }
+    if (f.size > MAX_BYTES) { er.textContent = "That image is " + fmtSize(f.size) + ". Please choose one under 5 MB, or take a cropped screenshot."; e.target.value = ""; return; }
+    shotFile = f; shotURL = URL.createObjectURL(f); img.src = shotURL; img.style.display = "block";
+  });
+
+  $("le-ansfile").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0], er = $("le-ans-err"), info = $("le-ansfile-info");
+    er.textContent = ""; ansFile = null; info.textContent = FILE_INFO;
+    if (!f) return;
+    if (f.size > MAX_BYTES) { er.textContent = "That file is " + fmtSize(f.size) + ". Please upload one under 5 MB."; e.target.value = ""; return; }
+    if (!/\.(txt|md|pdf|doc|docx|rtf)$/i.test(f.name)) { er.textContent = "Unsupported file type. Use TXT, MD, PDF, DOC, DOCX or RTF."; e.target.value = ""; return; }
+    ansFile = f; info.textContent = "Selected: " + f.name + " (" + fmtSize(f.size) + ")";
+  });
+
+  $("le-copy-num").addEventListener("click", function () {
+    var msg = $("le-copy-msg"), num = CONFIG.easypaisaNumber;
+    function ok() { msg.textContent = "Copied"; setTimeout(function () { msg.textContent = ""; }, 1800); }
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = num; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { if (document.execCommand("copy")) ok(); else msg.textContent = "Press and hold the number to copy"; } catch (e) { msg.textContent = "Press and hold the number to copy"; }
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(num).then(ok, fallback); else fallback();
+  });
+
+  function setErr(inputId, errId, msg) {
+    $(errId).textContent = msg;
+    $(inputId).classList.toggle("le-invalid", !!msg);
+  }
+  function waLink(text) { return "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(text); }
+  function safeName(n) { return (n || "answers").replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 30) || "answers"; }
+  function copyText(t) {
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t).then(function () { return true; }, function () { return false; });
+    return Promise.resolve(false);
+  }
+
+  function showDone(note) {
+    $("le-done-text").textContent = "We verify every payment manually. " + CONFIG.deliveryNote;
+    $("le-done-note").textContent = note || "";
+    $("le-resend").href = waLink(lastMessage);
+    $("le-done").hidden = false;
+    $("le-done").scrollIntoView({ behavior: "auto", block: "nearest" });
+  }
+
+  $("le-dl").addEventListener("click", function () {
+    var text = lastAnswersText || (mode === "paste" ? $("le-answers").value : compileAnswers());
+    var blob = new Blob([text], { type: "text/plain" }), a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = "LinkedIn-Engine-OS-Answers-" + safeName($("le-name").value) + ".txt";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  $("le-pform").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = $("le-name").value.trim(), tid = $("le-tid").value.trim();
+
+    setErr("le-name", "le-name-err", name.length < 2 ? "Enter your name (at least 2 characters)." : "");
+    setErr("le-tid", "le-tid-err",
+      !tid ? "Enter your Easypaisa Transaction ID." :
+      !/^[A-Za-z0-9]+$/.test(tid) ? "Use letters and digits only, no spaces or symbols." :
+      tid.length < 8 ? "The TID looks too short. It should be at least 8 characters." : "");
+
+    var pasted = $("le-answers").value.trim(), ansErr = "";
+    if (mode === "paste") { if (pasted.length < 40) ansErr = "Paste your answers (at least a few lines), or switch to Upload a file."; }
+    else if (!ansFile) ansErr = "Choose your answers file, or switch to Paste answers.";
+    $("le-ans-err").textContent = ansErr;
+
+    if ($("le-name-err").textContent) { $("le-name").focus(); return; }
+    if ($("le-tid-err").textContent) { $("le-tid").focus(); return; }
+    if (ansErr) { (mode === "paste" ? $("le-answers") : $("le-ansfile")).focus(); return; }
+
+    var message = "Hi Sak, I paid " + CONFIG.playbookPrice + " via Easypaisa for the LinkedIn Playbook.\n" +
+      "Name: " + name + "\n" +
+      "TID: " + tid + "\n" +
+      "Questionnaire answers: " + (mode === "paste" ? "attached as a file and pasted in this chat" : "attached as a file");
+    lastMessage = message;
+
+    var answersFile, answersText = "";
+    if (mode === "paste") {
+      answersText = pasted;
+      answersFile = new File([answersText], "LinkedIn-Engine-OS-Answers-" + safeName(name) + ".txt", { type: "text/plain" });
+    } else { answersFile = ansFile; }
+    lastAnswersText = answersText;
+
+    var files = [answersFile]; if (shotFile) files.push(shotFile);
+    var canShare = false;
+    try { canShare = !!(navigator.canShare && navigator.share && navigator.canShare({ files: files })); } catch (x) { canShare = false; }
+
+    var submit = $("le-submit");
+    submit.disabled = true;
+
+    function viaWhatsApp() {
+      window.open(waLink(message), "_blank", "noopener");
+      var notes = [];
+      var finish = function () {
+        if (shotFile) notes.push("Please attach your screenshot in the WhatsApp chat.");
+        showDone(notes.join(" "));
+        submit.disabled = false;
+      };
+      if (mode === "paste") {
+        copyText(answersText).then(function (copied) {
+          notes.push(copied ? "Your answers are copied. Paste them into the WhatsApp chat." : "Use Download my answers and attach the file in WhatsApp.");
+          finish();
+        });
+      } else { notes.push("Please attach your answers file in the WhatsApp chat."); finish(); }
+    }
+
+    if (canShare) {
+      navigator.share({ files: files, text: message }).then(function () {
+        showDone("Shared from your device. If it did not reach Sak, use Re-send on WhatsApp.");
+        submit.disabled = false;
+      }).catch(function (er) {
+        submit.disabled = false;
+        if (er && er.name === "AbortError") return;
+        viaWhatsApp();
+      });
+    } else { viaWhatsApp(); }
+  });
+
+  function resetProof() {
+    $("le-pform").reset();
+    if (shotURL) { URL.revokeObjectURL(shotURL); shotURL = null; }
+    shotFile = null; ansFile = null; lastMessage = ""; lastAnswersText = "";
+    $("le-shot-prev").style.display = "none"; $("le-done").hidden = true;
+    $("le-ansfile-info").textContent = FILE_INFO;
+    ["le-name-err", "le-tid-err", "le-shot-err", "le-ans-err"].forEach(function (id) { $(id).textContent = ""; });
+    ["le-name", "le-tid"].forEach(function (id) { $(id).classList.remove("le-invalid"); });
+    setMode("paste");
+  }
+
+  /* ---------- init ---------- */
+  fillConfig(); load(); build(); showStep(step, false);
+  var h = (location.hash || "").toLowerCase();
+  if (h === "#questionnaire") selectTab("q");
+  else if (h === "#payment") selectTab("p");
+})();
+</script>
+</body>
+</html>
